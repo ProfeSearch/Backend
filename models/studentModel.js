@@ -31,17 +31,17 @@ const studentSchema = new mongoose.Schema({
     applications: [
         {
             type: mongoose.Schema.ObjectId,
-            ref: 'Application'
+            ref: 'Application',
         },
     ],
 });
 
-studentSchema.pre(/^find/,function(next){
+studentSchema.pre(/^find/, function (next) {
     this.populate({
-        path:'user',
-        select:'_id email'
-    })
-})
+        path: 'user',
+        select: '_id email',
+    });
+});
 
 const Student = mongoose.model('Student', studentSchema);
 

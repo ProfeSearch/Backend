@@ -1,5 +1,4 @@
 const multer = require('multer');
-const sharp = require('sharp');
 const Student = require('../models/studentModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');

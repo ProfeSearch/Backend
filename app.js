@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
-const userController = require('./controllers/userController');
+const userRouter = require('./routes/userRoutes');
 const studentRouter = require('./routes/studentRoutes');
 const facultyRouter = require('./routes/facultyRoutes');
 const positionRouter = require('./routes/positionRoutes');
@@ -64,7 +64,7 @@ app.use(
 //     next();
 // });
 
-app.use('/api', userController);
+app.use('/api', userRouter);
 app.use('/api/students', studentRouter);
 app.use('/api/faculties', facultyRouter);
 app.use('/api/positions', positionRouter);

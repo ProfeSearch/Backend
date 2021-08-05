@@ -2,6 +2,8 @@ const crypto = require('crypto');
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
+const Student = require('../models/studentModel');
+const Faculty = require('../models/facultyModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const Email = require('../utils/email');
@@ -41,6 +43,17 @@ exports.signup = catchAsync(async (req, res, next) => {
         passwordConfirm: req.body.passwordConfirm,
     });
 
+    if (req.body.role === 'student') {
+        await Student.create({
+            user: newUser.id,
+        });
+    } else if (req.body.role === 'faculty') {
+        await Faculty.create({
+            user: newUser.id,
+        });
+    }
+
+    //send email
     const url = `${req.protocol}://${req.get('host')}/me`;
     await new Email(newUser, url).sendWelcome();
 

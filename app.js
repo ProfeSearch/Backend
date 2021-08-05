@@ -64,7 +64,7 @@ app.use(
 //     next();
 // });
 
-app.use('/api', userRouter);
+app.use('/api/users', userRouter);
 app.use('/api/students', studentRouter);
 app.use('/api/faculties', facultyRouter);
 app.use('/api/positions', positionRouter);

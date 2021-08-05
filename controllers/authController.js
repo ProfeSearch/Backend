@@ -123,7 +123,15 @@ exports.protect = catchAsync(async (req, res, next) => {
 
     //grant access to the protected route
     req.user = currentUser;
-    res.locals.user = currentUser;
+
+    // if (currentUser.role === 'faculty') {
+    //     console.log(req.user.id);
+    //     req.faculty = await Faculty.findOne({ user: req.user.id });
+    //     console.log(req.faculty);
+    // } else if (currentUser.role === 'student') {
+    //     req.student = await Student.findOne({ user: decoded.id });
+    //     console.log(req.student);
+    // }
     next();
 });
 
@@ -161,7 +169,7 @@ exports.isLoggedIn = async (req, res, next) => {
 exports.restrictTo =
     (...roles) =>
     (req, _res, next) => {
-        //roles ['admin', 'lead-guide']. role='user'
+        //roles ['faculty', 'student']. role='user'
         if (!roles.includes(req.user.role)) {
             return next(
                 new AppError(

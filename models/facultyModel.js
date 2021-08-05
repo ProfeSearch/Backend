@@ -1,4 +1,3 @@
-//TODO
 const mongoose = require('mongoose');
 const validator = require('validator');
 
@@ -41,6 +40,7 @@ facultySchema.pre(/^find/, function (next) {
         path: 'user',
         select: '_id email',
     });
+    next();
 });
 
 const Faculty = mongoose.model('Faculty', facultySchema);

@@ -4,6 +4,9 @@ const authController = require('../controllers/authController');
 
 const router = express.Router({ mergeParams: true });
 
+router.route('/').get(positionController.getAllPositions);
+router.route('/:id').get(positionController.getPosition);
+
 router.use(authController.protect, authController.restrictTo('faculty'));
 
 router

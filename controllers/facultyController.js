@@ -5,31 +5,32 @@ const catchAsync = require('../utils/catchAsync');
 const factory = require('./handlerFactory');
 
 exports.getMyProfile = catchAsync(async (req, res, next) => {
-    //TODO
+    const faculty = await Faculty.findOne({ user: req.user.id }).select(
+        '-__v -positions'
+    );
+
     res.status(200).json({
         status: 'success',
         data: {
-            data: null,
+            profile: faculty,
         },
     });
 });
 
-exports.createMyProfile = catchAsync(async (req, res, next) => {
-    //TODO
-    res.status(200).json({
-        status: 'success',
-        data: {
-            data: null,
-        },
-    });
-});
+exports.createMyProfile = factory.createOne(Faculty);
 
 exports.updateMyProfile = catchAsync(async (req, res, next) => {
-    //TODO
+    const facultyId = (await Faculty.findOne({ user: req.user.id })).id;
+    const faculty = await Faculty.findByIdAndUpdate(facultyId, req.body, {
+        new: true,
+        runValidators: true,
+        select: '-__v -positions',
+    });
+
     res.status(200).json({
         status: 'success',
         data: {
-            data: null,
+            profile: faculty,
         },
     });
 });

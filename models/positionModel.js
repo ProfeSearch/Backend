@@ -1,7 +1,13 @@
-//TODO
+//TODO 
+
 const mongoose = require("mongoose");
 const Faculty = require("./facultyModel");
 const AreaEnums = require("../enums/areaEnums");
+const PositionTypeEnums = require("../enums/positionTypeEnums");
+const locationEnums = require("../enums/locationEnums");
+const targetEnums = require("../enums/targetAudienceEnums");
+const posStatusEnums = require("../enums/posStatusEnums");
+
 
 const positionSchema = new mongoose.Schema({
   //TODO
@@ -19,10 +25,11 @@ const positionSchema = new mongoose.Schema({
     required: [true, "A position must have a description!"],
     minlength: [50, "Description should have at least 50 words!"],
   },
+  // changed for enum
   positionType: {
-    type: Number,
-    enum: [0, 1, 2],
-    default: 0,
+    type: String,
+    set: (el) => PositionTypeEnums[el+1], // starts from -1
+    default: "Unspecified",
     required: [true, "A position must have a type!"],
   },
   area: {
@@ -30,15 +37,17 @@ const positionSchema = new mongoose.Schema({
     set: (el) => AreaEnums[el],
     default: "Unspecified",
   },
+  // changed for enum
   location: {
-    type: Number,
-    enum: [0, 1],
-    default: 0,
+    type: String,
+    set: (el) => locationEnums[el+1], // starts from -1
+    default: "Unspecified",
   },
+  // changed for enum
   target: [
     {
-      type: Number,
-      enum: [0, 1, 2, 3, 4, 5],
+      type: String,
+      set: (el) => targetEnums[el],
     },
   ],
   deadline: {
@@ -50,10 +59,11 @@ const positionSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  // changed for enum
   status: {
-    type: Number,
-    enum: [0, 1, 2],
-    default: 0,
+    type: String,
+    set: (el) => posStatusEnums[el+1], // starts from -1
+    default: "all",
     required: [true, "A position must have a status!"],
   },
 });

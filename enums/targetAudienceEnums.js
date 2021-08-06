@@ -6,6 +6,6 @@ module.exports = [
     "graduate",
     "master",
     "doctor",
-    "undergraduate", 
+    "undergraduate",
     "all"
 ];

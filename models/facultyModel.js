@@ -1,4 +1,3 @@
-//TODO
 const mongoose = require('mongoose');
 const validator = require('validator');
 
@@ -10,16 +9,13 @@ const facultySchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: [true, 'A faculty must have a name!'],
     },
     institution: {
         type: String,
-        required: [true, 'A faculty must have an institution!'],
         default: 'University Of Southern California',
     },
     post: {
         type: String,
-        required: [true, 'A faculty must have a post!'],
         enum: ['Professor','Assistant Professor', 'Faculty'],
         default: 'Faculty'
     },
@@ -44,6 +40,7 @@ facultySchema.pre(/^find/, function (next) {
         path: 'user',
         select: '_id email',
     });
+    next();
 });
 
 const Faculty = mongoose.model('Faculty', facultySchema);

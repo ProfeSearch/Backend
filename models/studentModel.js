@@ -10,21 +10,17 @@ const studentSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: [true, 'A student must have a name!'],
     },
     institution: {
         type: String,
-        required: [true, 'A student must have an institution!'],
         default: 'University Of Southern California',
     },
     major: {
         type: String,
-        required: [true, 'A student must have a major!'],
         default: 'Computer Science',
     },
     grade: {
         type: String,
-        required: [true, 'A student must have a grade!'],
         enum: ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Master', 'Doctor'],
         default: 'Freshman',
     },
@@ -44,5 +40,5 @@ studentSchema.pre(/^find/, function (next) {
 });
 
 const Student = mongoose.model('Student', studentSchema);
-
+    
 module.exports = Student;

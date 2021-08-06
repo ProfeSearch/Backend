@@ -18,6 +18,12 @@ mongoose
     })
     .then(() => {
         console.log('Atlas Database connection successful...');
+    })
+    .catch((err) => {
+        console.log("Loading Atlas Database unsuccessful")
+        console.error(err.message);
+          // Exit process with failure
+        process.exit(1);
     });
 
 console.log(`Current environment is: ${process.env.NODE_ENV}`);

@@ -12,7 +12,7 @@ router.use(authController.protect, authController.restrictTo('faculty'));
 router
     .route('/myProfile')
     .get(facultyController.getMyProfile)
-    .post(facultyController.createMyProfile)
+    // .post(facultyController.createMyProfile)
     .patch(facultyController.updateMyProfile);
 
 module.exports = router;

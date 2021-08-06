@@ -9,6 +9,7 @@ const factory = require('./handlerFactory');
 
 exports.getAllPositions = catchAsync(async (req, res, next) => {
     //api/positions
+    if (!req.baseUrl.includes('/positions')) return next();
     if (req.identity !== 'student') {
         const features = new APIFeatures(Position.find(), req.query)
             .filter()
@@ -50,6 +51,7 @@ exports.getAllPositions = catchAsync(async (req, res, next) => {
 
 exports.getAllMyPositions = catchAsync(async (req, res, next) => {
     //api/faculties/myPositions
+    if (!req.baseUrl.includes('/myPositions')) return next();
     const faculty = (await Faculty.findOne({ user: req.user.id })).id;
 
     const doc = await Position.find({ faculty });
@@ -73,6 +75,7 @@ exports.setData = catchAsync(async (req, res, next) => {
 
 exports.getPosition = catchAsync(async (req, res, next) => {
     //api/positions/:id
+    if (!req.baseUrl.includes('/positions')) return next();
     const doc = await Position.findById(req.params.id);
 
     res.status(200).json({
@@ -86,6 +89,7 @@ exports.getPosition = catchAsync(async (req, res, next) => {
 
 exports.getMyPosition = catchAsync(async (req, res, next) => {
     //api/faculties/myPositions/:id
+    if (!req.baseUrl.includes('/myPositions')) return next();
     let query = Position.findById(req.params.id);
     query = query.populate('applications');
     const doc = await query;

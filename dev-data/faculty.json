@@ -1,0 +1,16 @@
+[
+    {
+        "_id": "610cf73a13610239a818e1fe",
+        "user": "610cf73a13610239a818e1fd",
+        "name": "Aaron Cote",
+        "institution": "USC",
+        "post": "Professor",
+        "fields": "CS",
+        "website": "http://usc.aaroncote.com",
+        "positions": [
+            "610cf73a13610239a818e1ff",
+            "610cf73a13610239a818e200",
+            "610cf73a13610239a818e201"
+        ]
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "_id": "610cf73a13610239a818e1fa",
+        "user": "610cf73a13610239a818e1f9",
+        "name": "Yibo Wen",
+        "institution": "USC",
+        "major": "Computer Science",
+        "grade": "Sophomore",
+        "applications": ["610cf73a13610239a818e1fb", "610cf73a13610239a818e1fc"]
+    }
+]

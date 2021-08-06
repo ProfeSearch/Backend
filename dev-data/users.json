@@ -1,0 +1,14 @@
+[
+    {
+        "_id": "610cf73a13610239a818e1f9",
+        "email": "yibowen@use.edu",
+        "role": "student",
+        "password": "test1234"
+    },
+    {
+        "_id": "610cf73a13610239a818e1fd",
+        "email": "aaroncote@use.edu",
+        "role": "faculty",
+        "password": "test1234"
+    }
+]

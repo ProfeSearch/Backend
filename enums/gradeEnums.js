@@ -1,9 +1,9 @@
 module.exports = [
-    "freshman",
-    "sophomore",
-    "junior",
-    "senior",
-    "graduate",
-    "master",
-    "doctor"
+    'freshman',
+    'sophomore',
+    'junior',
+    'senior',
+    'master',
+    'doctor',
+    'postdoc',
 ];

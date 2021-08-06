@@ -1,28 +1,50 @@
 const Position = require('../models/positionModel');
+const Student = require('../models/studentModel');
 const Faculty = require('../models/facultyModel');
 const AppError = require('../utils/appError');
 const APIFeatures = require('../utils/apiFeatures');
+const gradeEnums = require('../enums/gradeEnums');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('./handlerFactory');
 
 exports.getAllPositions = catchAsync(async (req, res, next) => {
     //api/positions
     if (req.baseUrl.endsWith('positions')) {
-        const features = new APIFeatures(Position.find(), req.query)
-            .filter()
-            .sort()
-            .limitFields()
-            .paginate();
-        const doc = await features.query;
+        if (req.identity !== 'student') {
+            const features = new APIFeatures(Position.find(), req.query)
+                .filter()
+                .sort()
+                .limitFields()
+                .paginate();
+            const doc = await features.query;
 
-        res.status(200).json({
-            status: 'success',
-            requestedAt: req.requestTime,
-            results: doc.length,
-            data: {
-                Positions: doc,
-            },
-        });
+            res.status(200).json({
+                status: 'success',
+                requestedAt: req.requestTime,
+                total: doc.length,
+                data: {
+                    Positions: doc,
+                },
+            });
+        } else {
+            const gradeValue = (await Student.findOne({ user: req.user.id }))
+                .grade;
+            const features = new APIFeatures(Position.find({target: gradeValue}), req.query)
+                .filter()
+                .sort()
+                .limitFields()
+                .paginate();
+            const doc = await features.query;
+
+            res.status(200).json({
+                status: 'success',
+                requestedAt: req.requestTime,
+                total: doc.length,
+                data: {
+                    Positions: doc,
+                },
+            });
+        }
     }
 
     //api/faculties/myPositions

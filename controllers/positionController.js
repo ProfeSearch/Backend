@@ -1,4 +1,4 @@
-const Position = require('../models/positionModel');
+ const Position = require('../models/positionModel');
 const Student = require('../models/studentModel');
 const Faculty = require('../models/facultyModel');
 const AppError = require('../utils/appError');
@@ -175,6 +175,12 @@ exports.createPosition = catchAsync(async (req, res, next) => {
     });
 });
 
+// // TODO
+// exports.close = catchAsync(async (res, req, next) => {
+
+// })
+
 exports.deletePosition = factory.deleteOne(Position);
 
+// TODO might have to customize
 exports.updatePosition = factory.updateOne(Position);

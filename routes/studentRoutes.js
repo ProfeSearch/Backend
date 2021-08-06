@@ -12,12 +12,13 @@ router.use('/myApplications', applicationRouter);
 router
     .route('/myCommonApp')
     .get(studentController.getMyCommonApp)
-    .post(studentController.createMyCommonApp)
+    //.post(studentController.createMyCommonApp)
     .patch(studentController.updateMyCommonApp);
-router
-    .route('/myFavorites')
-    .get(studentController.getMyFavorites)
-    .post(studentController.createFavorite)
-    .delete(studentController.deleteFavorite);
+    
+// router
+//     .route('/myFavorites')
+//     .get(studentController.getMyFavorites)
+//     .post(studentController.createFavorite)
+//     .delete(studentController.deleteFavorite);
 
 module.exports = router;

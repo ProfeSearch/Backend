@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
-const fieldEnums = require("../enums/fieldEnums");
-const univEnums = require("../enums/univEnums");
+const fieldEnums = require('../enums/fieldEnums');
+const univEnums = require('../enums/univEnums');
 
 const facultySchema = new mongoose.Schema({
     user: {
@@ -20,14 +20,13 @@ const facultySchema = new mongoose.Schema({
     },
     post: {
         type: String,
-        enum: ['Professor','Assistant Professor', 'Faculty'],
-        default: 'Faculty'
+        default: 'Faculty',
     },
     // changed for enum
-    fields: {
+    field: {
         type: String,
         set: (el) => fieldEnums[el],
-        default: 'Computer Science',
+        default: fieldEnums[8],
     },
     website: {
         type: String,

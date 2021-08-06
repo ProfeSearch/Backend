@@ -163,7 +163,7 @@ exports.createPosition = catchAsync(async (req, res, next) => {
     const doc = await Position.create(req.body);
     // const faculty = await Faculty.findById(req.user.id);
     const faculty = await Faculty.findOne({ user: req.user.id });
-    console.log("finding faculty by id: " + req.user.id);
+    console.log("finding faculty by id: " , req.user.id);
 
     faculty.positions.push(doc.id);
     faculty.save();

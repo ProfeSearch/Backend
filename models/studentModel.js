@@ -1,6 +1,10 @@
 //TODO
 const mongoose = require("mongoose");
-const validator = require("validator");
+const validator = require("validator");// validator is not used
+const majorEnums = require("../enums/majorEnums");
+const gradeEnums = require("../enums/gradeEnums");
+const univEnums = require("../enums/univEnums");
+
 
 const studentSchema = new mongoose.Schema({
   user: {
@@ -10,18 +14,25 @@ const studentSchema = new mongoose.Schema({
   },
   name: {
     type: String,
+    // Shouldn't name be required?
+    default: "Tommy Trojan!",
   },
+  // changed for enum
   institution: {
     type: String,
+    set: (el) => univEnums[el],
     default: "University Of Southern California",
   },
+  // changed for enum
   major: {
     type: String,
+    set: (el) => majorEnums[el],
     default: "Computer Science",
   },
+  // changed for enum
   grade: {
     type: String,
-    enum: ["Freshman", "Sophomore", "Junior", "Senior", "Master", "Doctor"],
+    set: (el) => gradeEnums[el],
     default: "Freshman",
   },
   applications: [

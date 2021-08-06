@@ -114,6 +114,8 @@ exports.getMyPosition = catchAsync(async (req, res, next) => {
     });
 });
 
+// create position works just fine
+
 exports.createPosition = catchAsync(async (req, res, next) => {
     const doc = await Position.create(req.body);
     const faculty = await Faculty.findById(req.body.faculty);

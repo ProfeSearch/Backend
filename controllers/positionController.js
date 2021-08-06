@@ -7,26 +7,15 @@ const gradeEnums = require('../enums/gradeEnums');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('./handlerFactory');
 
-exports.getAllPositions = catchAsync(async (req, res, next) => {
-    //api/positions
-    if (!req.baseUrl.includes('/positions')) return next();
-    if (req.identity !== 'student') {
-        const features = new APIFeatures(Position.find(), req.query)
-            .filter()
-            .sort()
-            .limitFields()
-            .paginate();
-        const doc = await features.query;
+// distinguishes between faculty and student
+// and acts different accordingly
 
-        res.status(200).json({
-            status: 'success',
-            requestedAt: req.requestTime,
-            total: doc.length,
-            data: {
-                Positions: doc,
-            },
-        });
-    } else {
+// TODO  make it omit sending "description"
+exports.getAllPositions = catchAsync(async (req, res, next) => {
+    
+    if (!req.baseUrl.includes('/positions')) return next();
+    // if it is a student, only allow access to materials of his grade
+    if (req.identity === 'student'){
         const gradeValue = (await Student.findOne({ user: req.user.id })).grade;
         const features = new APIFeatures(
             Position.find({ target: gradeValue }),
@@ -46,26 +35,43 @@ exports.getAllPositions = catchAsync(async (req, res, next) => {
                 Positions: doc,
             },
         });
+    // if it is a faculty, only queries the positions he/she posted
+    } else if (req.identity === 'faculty') {
+        const faculty = (await Faculty.findOne({ user: req.user.id })).id;
+        const doc = await Position.find({ faculty });
+
+        res.status(200).json({
+            status: 'success',
+            requestedAt: req.requestTime,
+            total: doc.length,
+            data: {
+                Positions: doc,
+            },
+        });
+    } else{
+        return next(new AppError('Cannot get "req.identity"... ', 404));
     }
 });
 
-exports.getAllMyPositions = catchAsync(async (req, res, next) => {
-    //api/faculties/myPositions
-    if (!req.baseUrl.includes('/myPositions')) return next();
-    const faculty = (await Faculty.findOne({ user: req.user.id })).id;
+// exports.getAllMyPositions = catchAsync(async (req, res, next) => {
+//     //api/faculties/myPositions
+//     if (!req.baseUrl.includes('/myPositions')) return next();
+//     const faculty = (await Faculty.findOne({ user: req.user.id })).id;
 
-    const doc = await Position.find({ faculty });
+//     const doc = await Position.find({ faculty });
 
-    res.status(200).json({
-        status: 'success',
-        requestedAt: req.requestTime,
-        total: doc.length,
-        data: {
-            Positions: doc,
-        },
-    });
-});
+//     res.status(200).json({
+//         status: 'success',
+//         requestedAt: req.requestTime,
+//         total: doc.length,
+//         data: {
+//             Positions: doc,
+//         },
+//     });
+// });
 
+
+// very good helper function, still necessary
 exports.setData = catchAsync(async (req, res, next) => {
     //delete duplicate values
     req.body.target = Array.from(new Set(req.body.target));
@@ -73,52 +79,92 @@ exports.setData = catchAsync(async (req, res, next) => {
     next();
 });
 
+
+// Distinguishes between student and faculty
+// visibilities rules apply similarly as above
 exports.getPosition = catchAsync(async (req, res, next) => {
-    //api/positions/:id
-    if (!req.baseUrl.includes('/positions')) return next();
-    const doc = await Position.findById(req.params.id);
+    if(req.identity === 'student'){
+        // where does req.user.id come from?
+        const gradeValue = (await Student.findOne({ user: req.user.id })).grade;
+        if (!req.baseUrl.includes('/positions')) return next();
+        const doc = await Position.findById(req.params.id); // why request params? not body?
 
-    res.status(200).json({
-        status: 'success',
-        requestedAt: req.requestTime,
-        data: {
-            Position: doc,
-        },
-    });
+        if (doc.target !== gradeValue) {
+            return next(
+                new AppError('Can not access to position for another grade', 404)
+            );
+        }
+        res.status(200).json({
+            status: 'success',
+            requestedAt: req.requestTime,
+            data: {
+                Position: doc,
+            },
+        });
+    } else if(req.identity === 'faculty'){
+        let query = Position.findById(req.params.id);
+        query = query.populate('applications');
+        const doc = await query;
+
+        if (!doc) {
+            return next(new AppError('Invalid Doc Id', 404));
+        }
+
+        const facultyId = (await Faculty.findOne({ user: req.user.id })).id;
+        if (doc.faculty.id !== facultyId) {
+            return next(
+                new AppError('Can not access others positions from here', 404)
+            );
+        }
+
+        res.status(200).json({
+            status: 'success',
+            total: doc.length,
+            data: {
+                position: doc,
+            },
+        });
+    }
+    else{
+        return next(new AppError('Cannot get "req.identity"... ', 404));
+    }
 });
 
-exports.getMyPosition = catchAsync(async (req, res, next) => {
-    //api/faculties/myPositions/:id
-    if (!req.baseUrl.includes('/myPositions')) return next();
-    let query = Position.findById(req.params.id);
-    query = query.populate('applications');
-    const doc = await query;
+// exports.getMyPosition = catchAsync(async (req, res, next) => {
+//     //api/faculties/myPositions/:id
+//     if (!req.baseUrl.includes('/myPositions')) return next();
+//     let query = Position.findById(req.params.id);
+//     query = query.populate('applications');
+//     const doc = await query;
 
-    if (!doc) {
-        return next(new AppError('Invalid Doc Id', 404));
-    }
+//     if (!doc) {
+//         return next(new AppError('Invalid Doc Id', 404));
+//     }
 
-    const facultyId = (await Faculty.findOne({ user: req.user.id })).id;
-    if (doc.faculty.id !== facultyId) {
-        return next(
-            new AppError('Can not access others positions from here', 404)
-        );
-    }
+//     const facultyId = (await Faculty.findOne({ user: req.user.id })).id;
+//     if (doc.faculty.id !== facultyId) {
+//         return next(
+//             new AppError('Can not access others positions from here', 404)
+//         );
+//     }
 
-    res.status(200).json({
-        status: 'success',
-        total: doc.length,
-        data: {
-            position: doc,
-        },
-    });
-});
+//     res.status(200).json({
+//         status: 'success',
+//         total: doc.length,
+//         data: {
+//             position: doc,
+//         },
+//     });
+// });
 
 // create position works just fine
 
 exports.createPosition = catchAsync(async (req, res, next) => {
     const doc = await Position.create(req.body);
-    const faculty = await Faculty.findById(req.body.faculty);
+    // const faculty = await Faculty.findById(req.user.id);
+    const faculty = await Faculty.findOne({ user: req.user.id });
+    console.log("finding faculty by id: " + req.user.id);
+
     faculty.positions.push(doc.id);
     faculty.save();
     res.status(201).json({

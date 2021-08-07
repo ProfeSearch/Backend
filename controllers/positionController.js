@@ -100,8 +100,9 @@ exports.getPosition = catchAsync(async (req, res, next) => {
         if (!doc) {
             return next(new AppError('Invalid Doc Id', 404));
         }
-
-        if (doc.target !== gradeValue) {
+        // console.log("gradeValue: "+ gradeValue);
+        // console.log(doc.target);
+        if (!doc.target.includes(gradeValue)) {
             return next(
                 new AppError(
                     'Can not access to position for another grade',

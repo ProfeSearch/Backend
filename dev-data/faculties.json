@@ -3,9 +3,9 @@
         "_id": "610cf73a13610239a818e1fe",
         "user": "610cf73a13610239a818e1fd",
         "name": "Aaron Cote",
-        "institution": "USC",
+        "institution": 41,
         "post": "Professor",
-        "fields": "CS",
+        "field": 6,
         "website": "http://usc.aaroncote.com",
         "positions": [
             "610cf73a13610239a818e1ff",

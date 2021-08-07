@@ -1,0 +1,24 @@
+[
+    {
+        "_id": "610cf73a13610239a818e1ff",
+        "target": [0, 1],
+        "faculty": "610cf73a13610239a818e1fe",
+        "title": "CS104 Teaching Assistant",
+        "description": "Help grade the homework and beat the hell of UCLA bastards, etc",
+        "positionType": 3,
+        "area": 6,
+        "location": 1,
+        "status": 1
+    },
+    {
+        "_id": "610cf73a13610239a818e200",
+        "target": [0, 1, 2, 3],
+        "faculty": "610cf73a13610239a818e1fe",
+        "title": "CS170 Teaching Assistant",
+        "description": "Help grade the homework and host Q&A sessions for freshman students.",
+        "positionType": 3,
+        "area": 6,
+        "location": 1,
+        "status": 2
+    }
+]

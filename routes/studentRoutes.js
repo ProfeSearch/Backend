@@ -13,7 +13,7 @@ router
     .route('/myCommonApp')
     .get(studentController.getMyCommonApp)
     // .post(studentController.createMyCommonApp)
-    .patch(studentController.updateMyCommonApp);
+    .patch(studentController.getLinkedinProfile, studentController.updateMyCommonApp);
 
 // router
 //     .route('/myFavorites')

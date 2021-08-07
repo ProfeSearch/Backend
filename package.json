@@ -40,10 +40,11 @@
         "nodemailer": "^6.6.3",
         "nodemon": "^2.0.12",
         "pug": "^3.0.2",
-        "scrapedin": "^1.0.21",
         "slugify": "^1.6.0",
         "validator": "^13.6.0",
-        "xss-clean": "^0.1.1"
+        "xss-clean": "^0.1.1",
+        "puppeteer": "1.13.0",
+        "winston": "3.1.0"
     },
     "devDependencies": {
         "eslint": "^7.31.0",

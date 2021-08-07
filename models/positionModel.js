@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Faculty = require('./facultyModel');
 const AreaEnums = require('../enums/areaEnums');
 const PositionTypeEnums = require('../enums/positionTypeEnums');
 const locationEnums = require('../enums/locationEnums');
@@ -84,6 +83,6 @@ positionSchema.pre(/^find/, function (next) {
     next();
 });
 
-const Position = mongoose.model('position', positionSchema);
+const Position = mongoose.model('Position', positionSchema);
 
 module.exports = Position;

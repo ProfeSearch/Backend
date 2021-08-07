@@ -11,19 +11,18 @@ exports.getAllApplications = catchAsync(async (req, res, next) => {
     const student = (await Student.findOne({ user: req.user.id })).id;
 
     const doc = await Application.find({ student })
-        .select('-student -__v')
-        .populate({
-            path: 'position',
-            select: '-description -target -released -deadline -status -__v',
-            populate: { path: 'faculty', select: 'name' },
-        });
+    .populate({
+        path: 'position',
+        select: '-description -target -released -deadline -status -__v',
+        populate: { path: 'faculty', select: 'name' },
+    });
 
     res.status(200).json({
         status: 'success',
         requestedAt: req.requestTime,
         total: doc.length,
         data: {
-            Positions: doc,
+            Applications: doc,
         },
     });
 });
@@ -43,12 +42,13 @@ exports.setData = catchAsync(async (req, res, next) => {
 // finds a specified application through id
 exports.getApplication = catchAsync(async (req, res, next) => {
     if (req.identity === 'student') {
-        const doc = await Application.findById(req.params.id).select('-student -__v')
-        .populate({
-            path: 'position',
-            select: '-target -released -deadline -status -__v',
-            populate: { path: 'faculty', select: 'name' },
-        });
+        const doc = await Application.findById(req.params.id)
+            .select('-student -__v')
+            .populate({
+                path: 'position',
+                select: '-target -released -deadline -status -__v',
+                populate: { path: 'faculty', select: 'name' },
+            });
 
         if (!doc) {
             return next(new AppError('Invalid Application Id', 404));
@@ -61,14 +61,14 @@ exports.getApplication = catchAsync(async (req, res, next) => {
                 Application: doc,
             },
         });
-    }
-    else if (req.identity === 'faculty') {
-        const doc = await Application.findById(req.params.id).select('-__v')
-        .populate({
-            path: 'position',
-            select: '-target -released -deadline -status -__v',
-            populate: { path: 'faculty', select: 'name' },
-        });
+    } else if (req.identity === 'faculty') {
+        const doc = await Application.findById(req.params.id)
+            .select('-__v')
+            .populate({
+                path: 'position',
+                select: '-target -released -deadline -status -__v',
+                populate: { path: 'faculty', select: 'name' },
+            });
 
         if (!doc) {
             return next(new AppError('Invalid Application Id', 404));

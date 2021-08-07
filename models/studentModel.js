@@ -15,7 +15,7 @@ const studentSchema = new mongoose.Schema({
   name: {
     type: String,
     // Shouldn't name be required?
-    default: "Tommy Trojan!",
+    default: "Tommy Trojan",
   },
   // changed for enum
   institution: {

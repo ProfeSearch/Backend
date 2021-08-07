@@ -121,7 +121,11 @@ exports.getPosition = catchAsync(async (req, res, next) => {
         });
     } else if (req.identity === 'faculty') {
         let query = Position.findById(req.params.id);
-        query = query.populate('applications');
+        query = query.populate({
+            path: 'applications',
+            select: '-__v -position',
+            populate: {path: 'student', select: '-__v -applications -user'}
+        });
         const doc = await query;
 
         if (!doc) {

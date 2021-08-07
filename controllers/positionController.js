@@ -14,8 +14,11 @@ const factory = require('./handlerFactory');
 exports.getAllPositions = catchAsync(async (req, res, next) => {
     if (!req.baseUrl.includes('/positions')) return next();
     // if it is a student, only allow access to materials of his grade
-    if (req.identity === 'student') {
-        const gradeValue = (await Student.findOne({ user: req.user.id })).grade;
+    if (req.identity === 'student'){
+        let gradeValue = (await Student.findOne({ user: req.user.id })).grade;
+        // console.log("The student has grade: "+ gradeValue);
+        gradeValue = gradeEnums.indexOf(gradeValue);
+        // console.log("The student has grade: "+ gradeValue);
         const features = new APIFeatures(
             Position.find({ target: gradeValue }),
             req.query
@@ -37,7 +40,18 @@ exports.getAllPositions = catchAsync(async (req, res, next) => {
         // if it is a faculty, only queries the positions he/she posted
     } else if (req.identity === 'faculty') {
         const faculty = (await Faculty.findOne({ user: req.user.id })).id;
-        const doc = await Position.find({ faculty });
+
+        const features = new APIFeatures(
+            Position.find({ faculty }),
+            req.query
+        )
+            .filter()
+            .sort()
+            .limitFields()
+            .paginate();
+        const doc = await features.query;
+
+        // const doc = await Position.find({ faculty });
 
         res.status(200).json({
             status: 'success',

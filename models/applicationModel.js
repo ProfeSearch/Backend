@@ -15,7 +15,7 @@ const applicationSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        set: (el) => appStatusEnums[el+1], // starts from -1
+        set: (el) => appStatusEnums[el], // starts from -1
         required: [true, 'An application must have a status'],
     }
 });

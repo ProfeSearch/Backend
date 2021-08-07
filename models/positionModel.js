@@ -24,7 +24,7 @@ const positionSchema = new mongoose.Schema({
     // changed for enum
     positionType: {
         type: String,
-        set: (el) => PositionTypeEnums[el + 1], // starts from -1
+        set: (el) => PositionTypeEnums[el], // starts from -1
         default: 'Unspecified',
         required: [true, 'A position must have a type!'],
     },
@@ -36,7 +36,7 @@ const positionSchema = new mongoose.Schema({
     // changed for enum
     location: {
         type: String,
-        set: (el) => locationEnums[el + 1], // starts from -1
+        set: (el) => locationEnums[el], // starts from -1
         default: 'Unspecified',
     },
     // changed for enum
@@ -58,7 +58,7 @@ const positionSchema = new mongoose.Schema({
     // changed for enum
     status: {
         type: String,
-        set: (el) => posStatusEnums[el + 1], // starts from -1
+        set: (el) => posStatusEnums[el], // starts from -1
         default: 'all',
         required: [true, 'A position must have a status!'],
     },

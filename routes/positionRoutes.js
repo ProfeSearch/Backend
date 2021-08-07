@@ -8,19 +8,14 @@ const router = express.Router({ mergeParams: true });
 
 // ---------- updated routing
 
-
 router.use(authController.protect, authController.checkStatus);
 
 // displays all positions for both faculty and students
-// queries can be applied? 
-router
-    .route('/')
-    .get(positionController.getAllPositions);
+// queries can be applied?
+router.route('/').get(positionController.getAllPositions);
 
 // displays single position by id
-router
-    .route('/:id')
-    .get(positionController.getPosition);
+router.route('/:id').get(positionController.getPosition);
 
 // creates a new position
 router
@@ -33,14 +28,24 @@ router
 // router.use(authController.restrictTo('faculty'));
 router
     .route('/:id')
-    .patch(authController.restrictTo('faculty'), positionController.updatePosition)
-    .delete(authController.restrictTo('faculty'), positionController.deletePosition);
-    
+    .patch(
+        authController.restrictTo('faculty'),
+        positionController.updatePosition
+    )
+    .delete(
+        authController.restrictTo('faculty'),
+        positionController.deletePosition
+    );
+
 // TODO shut-down a open position
 // don't forget to implement the .close() in positionController
 
+<<<<<<< HEAD
 // router.post('/:id/close', authController.restrictTo('faculty'), positionController.close);
 
+=======
+//router.post('/:id/close', authController.restrictTo('faculty'), positionController.close);
+>>>>>>> 53e941f5bc8290560ca92d79fb742ff4378c5324
 
 // ------------------------
 // ------------ old routing

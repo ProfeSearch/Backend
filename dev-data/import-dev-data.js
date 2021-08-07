@@ -46,7 +46,7 @@ const importData = async () => {
         await Faculty.create(faculties, { validateBeforeSave: false });
         await Student.create(students, { validateBeforeSave: false });
         await Position.create(positions, { validateBeforeSave: false });
-        //await Application.create(applications, { validateBeforeSave: false });
+        await Application.create(applications, { validateBeforeSave: false });
         console.log('Data successfully loaded!');
     } catch (err) {
         console.log(err);
@@ -61,7 +61,7 @@ const deleteData = async () => {
         await Faculty.deleteMany();
         await Student.deleteMany();
         await Position.deleteMany();
-        //await Application.deleteMany();
+        await Application.deleteMany();
         console.log('Data successfully deleted!');
     } catch (err) {
         console.log(err);

@@ -6,16 +6,21 @@ const router = express.Router({ mergeParams: true });
 
 // router.use(authController.protect, authController.restrictTo('student'));
 // Shouldn't restrict to 'student' because faculty can also accept or reject an application
-router.use(authController.protect);
+router.use(authController.protect, authController.checkStatus);
 
 router
     .route('/')
     // only student will need to check for all of his applications
     // professors check applications per each of their positions
-    .get(authController.restrictTo('student'), applicationController.getAllApplications)
+    .get(
+        authController.restrictTo('student'),
+        applicationController.getAllApplications
+    )
+router
+    .route('/positions/:id')
     .post(
-        applicationController.setData,
         authController.restrictTo('student'), // only a student can create an application
+        applicationController.setData,
         applicationController.createApplication
     );
 
@@ -26,7 +31,10 @@ router
     .get(applicationController.getApplication)
 
     // only a faculty can accept or reject
-    .patch(authController.restrictTo('faculty'), applicationController.updateApplication)
+    .patch(
+        authController.restrictTo('faculty'),
+        applicationController.updateApplication
+    )
     .delete(applicationController.deleteApplication);
 
 module.exports = router;

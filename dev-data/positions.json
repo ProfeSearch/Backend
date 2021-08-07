@@ -5,31 +5,31 @@
         "faculty": "610cf73a13610239a818e1fe",
         "title": "CS104 Teaching Assistant",
         "description": "Help grade the homework and beat the hell of UCLA bastards, etc",
-        "positionType": 3,
+        "positionType": 2,
         "area": 6,
         "location": 1,
         "status": 0
     },
     {
         "_id": "610cf73a13610239a818e200",
-        "target": [0, 1, 2, 3],
+        "target": [0, 1, 2],
         "faculty": "610cf73a13610239a818e1fe",
         "title": "CS170 Teaching Assistant",
         "description": "Help grade the homework and host Q&A sessions for freshman students.",
-        "positionType": 3,
+        "positionType": 2,
         "area": 6,
-        "location": 1,
+        "location": 0,
         "status": 1
     },
     {
         "_id": "610cf73a13610239a818e201",
-        "target": [4, 5],
+        "target": [4, 5, 6],
         "faculty": "610cf73a13610239a818e1fe",
         "title": "Computer Vision Research Assistant",
         "description": "Work with CV algorithm in the USC CV Lab, help with publication and data collection.",
-        "positionType": 1,
+        "positionType": 0,
         "area": 8,
-        "location": 1,
+        "location": 0,
         "status": 0
     },
     {
@@ -40,7 +40,7 @@
         "description": "Work with C++ algorithm in the CIT C++ Lab, help with publication and data collection.",
         "positionType": 1,
         "area": 6,
-        "location": 1,
+        "location": 0,
         "status": 0
     },
     {
@@ -49,9 +49,31 @@
         "faculty": "610cf73a13610239a818e208",
         "title": "CS102 Grader",
         "description": "Help grade CS102 homework and exams, host TA sessions when necessary.",
-        "positionType": 3,
+        "positionType": 2,
         "area": 7,
-        "location": 2,
+        "location": 1,
+        "status": 0
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf14",
+        "target": [2, 3],
+        "faculty": "610e2b7bbf4acb623876bf11",
+        "title": "Part-time Econ Research Assistant",
+        "description": "Basic skills in data modelling, data gathering, feel passionate about economics",
+        "positionType": 0,
+        "area": 6,
+        "location": 0,
+        "status": 0
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf15",
+        "target": [3, 4, 5, 6],
+        "faculty": "610e2b7bbf4acb623876bf11",
+        "title": "Econ Startup Intern",
+        "description": "Help analyze user behavior, basic communication with customers.",
+        "positionType": 1,
+        "area": 3,
+        "location": 1,
         "status": 0
     }
 ]

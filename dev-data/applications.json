@@ -1,24 +1,68 @@
 [
     {
-        "_id": "610cf73a13610239a818e1ff",
-        "target": [0, 1],
-        "faculty": "610cf73a13610239a818e1fe",
-        "title": "CS104 Teaching Assistant",
-        "description": "Help grade the homework and beat the hell of UCLA bastards, etc",
-        "positionType": 3,
-        "area": 6,
-        "location": 1,
+        "_id": "610cf73a13610239a818e1fb",
+        "position": "610cf73a13610239a818e1ff",
+        "student": "610cf73a13610239a818e1fa",
+        "status": 0
+    },
+    {
+        "_id": "610cf73a13610239a818e1fc",
+        "position": "610cf73a13610239a818e200",
+        "student": "610cf73a13610239a818e1fa",
         "status": 1
     },
     {
-        "_id": "610cf73a13610239a818e200",
-        "target": [0, 1, 2, 3],
-        "faculty": "610cf73a13610239a818e1fe",
-        "title": "CS170 Teaching Assistant",
-        "description": "Help grade the homework and host Q&A sessions for freshman students.",
-        "positionType": 3,
-        "area": 6,
-        "location": 1,
+        "_id": "610cf73a13610239a818e204",
+        "position": "610cf73a13610239a818e200",
+        "student": "610cf73a13610239a818e203",
+        "status": 0
+    },
+    {
+        "_id": "610cf73a13610239a818e205",
+        "position": "610cf73a13610239a818e20a",
+        "student": "610cf73a13610239a818e203",
         "status": 2
+    },
+    {
+        "_id": "610cf73a13610239a818e206",
+        "position": "610cf73a13610239a818e1ff",
+        "student": "610cf73a13610239a818e203",
+        "status": 0
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf09",
+        "position": "610cf73a13610239a818e200",
+        "student": "610e2b7bbf4acb623876bf07",
+        "status": 1
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf0a",
+        "position": "610cf73a13610239a818e20a",
+        "student": "610e2b7bbf4acb623876bf07",
+        "status": 0
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf0b",
+        "position": "610cf73a13610239a818e209",
+        "student": "610e2b7bbf4acb623876bf08",
+        "status": 2
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf0c",
+        "position": "610cf73a13610239a818e20a",
+        "student": "610e2b7bbf4acb623876bf08",
+        "status": 1
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf0d",
+        "position": "610e2b7bbf4acb623876bf14",
+        "student": "610e2b7bbf4acb623876bf08",
+        "status": 0
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf0e",
+        "position": "610e2b7bbf4acb623876bf15",
+        "student": "610e2b7bbf4acb623876bf08",
+        "status": 1
     }
 ]

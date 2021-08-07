@@ -15,6 +15,33 @@
         "institution": 5,
         "major": 6,
         "grade": 1,
-        "applications": ["610cf73a13610239a818e204", "610cf73a13610239a818e205", "610cf73a13610239a818e206"]
+        "applications": [
+            "610cf73a13610239a818e204",
+            "610cf73a13610239a818e205",
+            "610cf73a13610239a818e206"
+        ]
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf07",
+        "user": "610cf73a13610239a818e20b",
+        "name": "Flora Jia",
+        "institution": 41,
+        "major": 4,
+        "grade": 2,
+        "applications": ["610e2b7bbf4acb623876bf09", "610e2b7bbf4acb623876bf0a"]
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf08",
+        "user": "610cf73a13610239a818e20c",
+        "name": "Lorena Yan",
+        "institution": 7,
+        "major": 2,
+        "grade": 3,
+        "applications": [
+            "610e2b7bbf4acb623876bf0b",
+            "610e2b7bbf4acb623876bf0c",
+            "610e2b7bbf4acb623876bf0d",
+            "610e2b7bbf4acb623876bf0e"
+        ]
     }
 ]

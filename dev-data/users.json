@@ -14,6 +14,20 @@
         "passwordConfirm": "test1234"
     },
     {
+        "_id": "610cf73a13610239a818e20b",
+        "email": "flora@usc.edu",
+        "role": "student",
+        "password": "test1234",
+        "passwordConfirm": "test1234"
+    },
+    {
+        "_id": "610cf73a13610239a818e20c",
+        "email": "lorena@usc.edu",
+        "role": "student",
+        "password": "test1234",
+        "passwordConfirm": "test1234"
+    },
+    {
         "_id": "610cf73a13610239a818e1fd",
         "email": "aaroncote@usc.edu",
         "role": "faculty",
@@ -23,6 +37,13 @@
     {
         "_id": "610cf73a13610239a818e207",
         "email": "goodney@usc.edu",
+        "role": "faculty",
+        "password": "test1234",
+        "passwordConfirm": "test1234"
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf10",
+        "email": "donald@gmail.com",
         "role": "faculty",
         "password": "test1234",
         "passwordConfirm": "test1234"

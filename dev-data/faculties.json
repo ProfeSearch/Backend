@@ -25,5 +25,18 @@
             "610cf73a13610239a818e209",
             "610cf73a13610239a818e20a"
         ]
+    },
+    {
+        "_id": "610e2b7bbf4acb623876bf11",
+        "user": "610e2b7bbf4acb623876bf10",
+        "name": "Donald Prompt",
+        "institution": 2,
+        "post": "Faculty",
+        "field": 3,
+        "website": "http://www.donald1365472.com",
+        "positions": [
+            "610e2b7bbf4acb623876bf12",
+            "610e2b7bbf4acb623876bf13"
+        ]
     }
 ]

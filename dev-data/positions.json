@@ -31,5 +31,27 @@
         "area": 8,
         "location": 1,
         "status": 0
+    },
+    {
+        "_id": "610cf73a13610239a818e209",
+        "target": [3, 4],
+        "faculty": "610cf73a13610239a818e208",
+        "title": "C++ Algorithm Research Assistant",
+        "description": "Work with C++ algorithm in the CIT C++ Lab, help with publication and data collection.",
+        "positionType": 1,
+        "area": 6,
+        "location": 1,
+        "status": 0
+    },
+    {
+        "_id": "610cf73a13610239a818e20a",
+        "target": [1, 2, 3],
+        "faculty": "610cf73a13610239a818e208",
+        "title": "CS102 Grader",
+        "description": "Help grade CS102 homework and exams, host TA sessions when necessary.",
+        "positionType": 3,
+        "area": 7,
+        "location": 2,
+        "status": 0
     }
 ]

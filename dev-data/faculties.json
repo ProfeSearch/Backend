@@ -12,5 +12,18 @@
             "610cf73a13610239a818e200",
             "610cf73a13610239a818e201"
         ]
+    },
+    {
+        "_id": "610cf73a13610239a818e208",
+        "user": "610cf73a13610239a818e207",
+        "name": "Andrew Goodney",
+        "institution": 4,
+        "post": "Teacher",
+        "field": 6,
+        "website": "http://usc.googney.com",
+        "positions": [
+            "610cf73a13610239a818e209",
+            "610cf73a13610239a818e20a"
+        ]
     }
 ]

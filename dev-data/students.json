@@ -4,8 +4,17 @@
         "user": "610cf73a13610239a818e1f9",
         "name": "Yibo Wen",
         "institution": 41,
-        "major": 6,
+        "major": 8,
         "grade": 1,
         "applications": ["610cf73a13610239a818e1fb", "610cf73a13610239a818e1fc"]
+    },
+    {
+        "_id": "610cf73a13610239a818e203",
+        "user": "610cf73a13610239a818e202",
+        "name": "Tom Zhou",
+        "institution": 5,
+        "major": 6,
+        "grade": 1,
+        "applications": ["610cf73a13610239a818e204", "610cf73a13610239a818e205", "610cf73a13610239a818e206"]
     }
 ]

@@ -1,14 +1,28 @@
 [
     {
         "_id": "610cf73a13610239a818e1f9",
-        "email": "yibowen@use.edu",
+        "email": "yibowen@usc.edu",
+        "role": "student",
+        "password": "test1234",
+        "passwordConfirm": "test1234"
+    },
+    {
+        "_id": "610cf73a13610239a818e202",
+        "email": "tomzhou@usc.edu",
         "role": "student",
         "password": "test1234",
         "passwordConfirm": "test1234"
     },
     {
         "_id": "610cf73a13610239a818e1fd",
-        "email": "aaroncote@use.edu",
+        "email": "aaroncote@usc.edu",
+        "role": "faculty",
+        "password": "test1234",
+        "passwordConfirm": "test1234"
+    },
+    {
+        "_id": "610cf73a13610239a818e207",
+        "email": "goodney@usc.edu",
         "role": "faculty",
         "password": "test1234",
         "passwordConfirm": "test1234"

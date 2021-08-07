@@ -1,5 +1,3 @@
-//TODO
-
 const mongoose = require('mongoose');
 const Faculty = require('./facultyModel');
 const AreaEnums = require('../enums/areaEnums');
@@ -9,7 +7,6 @@ const targetEnums = require('../enums/targetAudienceEnums');
 const posStatusEnums = require('../enums/posStatusEnums');
 
 const positionSchema = new mongoose.Schema({
-    //TODO
     faculty: {
         type: mongoose.Schema.ObjectId,
         ref: 'Faculty',

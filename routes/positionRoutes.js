@@ -40,12 +40,8 @@ router
 // TODO shut-down a open position
 // don't forget to implement the .close() in positionController
 
-<<<<<<< HEAD
 // router.post('/:id/close', authController.restrictTo('faculty'), positionController.close);
 
-=======
-//router.post('/:id/close', authController.restrictTo('faculty'), positionController.close);
->>>>>>> 53e941f5bc8290560ca92d79fb742ff4378c5324
 
 // ------------------------
 // ------------ old routing
